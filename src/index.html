@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap w/ Vite</title>
+    <title>JET Assessment</title>
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary">Primary button</button>
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-8 text-center">
+          <h1 class="mt-5">JET Restaurant Search 🧑‍🍳</h1>
+          <input type="text" class="form-control my-3" id="searchForm" placeholder="Enter postcode, e.g., LS2 7HY">
+          <button type="button" class="btn btn-primary" id="postInput">Search</button>
+        </div>
+      </div>
+      <div id="restaurant-details" class="row row-cols-1 row-cols-md-2 g-4 my-3">
+      </div>
     </div>
   </body>
 </html>
