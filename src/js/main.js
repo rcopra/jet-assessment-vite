@@ -7,17 +7,25 @@ import * as bootstrap from 'bootstrap'
 const searchForm = document.getElementById('searchForm');
 const postInput = document.getElementById('postInput');
 const resultsList = document.getElementById('restaurant-details')
-// TODO:
-// add event listener to search button
-// when button is clicked, we take value from input field and create API URL
+
+// TODO: error handling, ideally strip spaces from postcode if time permits
 postInput.addEventListener('click', function(){
-    const postcode = searchForm.value;
+    const postcode = searchForm.value.toLowerCase();
+
+    if (!postcode) {
+      alert('Please enter a valid postcode');
+      return;
+  }
     const apiURL = `/api/discovery/uk/restaurants/enriched/bypostcode/${postcode}`;
     fetch(apiURL)
-      .then(response => response.json())
-      .then(data => {
-          insertResults(data.restaurants)
-      })
+        .then(response => response.json())
+        .then(data => {
+            insertResults(data.restaurants);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            alert('Failed to fetch data. Please try again.');
+        });
 });
 // fetch select data from the API, and filter relevant data (name, address, rating, cuisines)
 // update index.html via DOM, limiting results to 10 restaurants
