@@ -11,7 +11,7 @@ const resultsList = document.getElementById('restaurant-details');
 
 postInput.addEventListener('click', function(){
   // TODO: Strip spaces from postcode if time permits (regex)
-    const postcode = searchForm.value.toLowerCase();
+    const postcode = searchForm.value.toLowerCase().replace(/\s+/g, '');
 
     if (!postcode) {
       alert('Please enter a valid postcode');
