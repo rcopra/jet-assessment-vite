@@ -22,6 +22,8 @@ Per the assigment instructions, we're only concerned with the following pieces o
 
 ## How to Build and Run the Project
 
+_Ensure you have node installed. Check with `node -v` and if not installed, install here: https://nodejs.org/en/download/package-manager/_
+
 1. Clone the repository:
    `git clone https://github.com/rcopra/jet-assessment-vite.git`
 2. Navigate to the project directory:
