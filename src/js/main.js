@@ -6,10 +6,11 @@ import * as bootstrap from 'bootstrap'
 
 const searchForm = document.getElementById('searchForm');
 const postInput = document.getElementById('postInput');
-const resultsList = document.getElementById('restaurant-details')
+const resultsList = document.getElementById('restaurant-details');
 
-// TODO: error handling, ideally strip spaces from postcode if time permits
+
 postInput.addEventListener('click', function(){
+  // TODO: Strip spaces from postcode if time permits (regex)
     const postcode = searchForm.value.toLowerCase();
 
     if (!postcode) {
@@ -30,12 +31,27 @@ postInput.addEventListener('click', function(){
 // fetch select data from the API, and filter relevant data (name, address, rating, cuisines)
 // update index.html via DOM, limiting results to 10 restaurants
 function insertResults(restaurants) {
-  resultsList.innerHTML = ""
-
+  resultsList.innerHTML = ''
+  if (restaurants && restaurants.length > 0) {
   restaurants.slice(0, 10).forEach(restaurant => {
-    const cuisines = restaurant.cuisines.map(cuisine => cuisine.name).join(',');
+    const card = document.createElement('div');
+    card.classList.add('card', 'mb-3');
+
+    const cuisines = restaurant.cuisines.map(cuisine => cuisine.name).join(', ');
     const rating = restaurant.rating ? restaurant.rating.starRating : 'No rating';
     const address = `${restaurant.address.firstLine}, ${restaurant.address.city}, ${restaurant.address.postalCode}`;
-    resultsList.insertAdjacentHTML("beforeend", `<li class="list-group-item">${restaurant.name}, ${rating}, ${cuisines}, ${address}</li>`)
-  })
+
+    card.innerHTML = `
+    <div class="card-body">
+        <h5 class="card-title">${restaurant.name}</h5>
+        <p class="card-text"><strong>Cuisines:</strong> ${cuisines}</p>
+        <p class="card-text"><strong>Rating:</strong> ${rating}</p>
+        <p class="card-text"><small class="text-muted">${address}</small></p>
+    </div>
+`;
+resultsList.appendChild(card);
+});
+} else {
+  resultsList.innerHTML = '<div class="alert alert-warning" role="alert">No restaurants found! Please input another postcode</div>';
+  }
 };
