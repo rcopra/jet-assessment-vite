@@ -44,9 +44,9 @@ function insertResults(restaurants) {
     card.innerHTML = `
     <div class="card-body">
         <h5 class="card-title">${restaurant.name}</h5>
+        <p class="card-text"><small class="text-muted">${address}</small></p>
         <p class="card-text"><strong>Cuisines:</strong> ${cuisines}</p>
         <p class="card-text"><strong>Rating:</strong> ${rating}</p>
-        <p class="card-text"><small class="text-muted">${address}</small></p>
     </div>
 `;
 resultsList.appendChild(card);
