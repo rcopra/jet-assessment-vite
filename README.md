@@ -26,11 +26,9 @@ Per the assigment instructions, we're only concerned with the following pieces o
    `git clone https://github.com/rcopra/jet-assessment-vite.git`
 2. Navigate to the project directory:
    `cd jet-assessment-vite`
-3. Install the necessary Node.js dependencies:
-   `npm install`
-4. Start the server:
+3. Start the server:
    `npm start`
-5. Once the server is running, open your web browser and go to [http://localhost:5173](http://localhost:5173) (or whichever port you've configured) to view the application.
+4. Once the server is running, open your web browser and go to [http://localhost:5173](http://localhost:5173) (or whichever port you've configured) to view the application.
 
 ## Assumptions
 
